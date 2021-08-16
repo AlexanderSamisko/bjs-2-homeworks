@@ -30,14 +30,9 @@ Student.prototype.addMarks = function (...arguments) {
 Student.prototype.getAverage = function () {
 	let summ = 0;	
 	this.marks.forEach((item) => summ += item);	 
-	this.average = summ / this.marks.length;
+	return summ / this.marks.length;
 }
 
-Student.prototype.excludeStudent = function (reason) {  // первоначально сделал так, но тесты ругались. Переделал на простой exclude ниже - ругается браузер на main.
-	delete this.subject;
-	delete this.marks;
-	this.excluded = `${reason}`
-}
 
 Student.prototype.exclude = function (reason) {
 	delete this.subject;
