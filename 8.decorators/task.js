@@ -42,20 +42,22 @@ function debounceDecoratorNew(func,ms) {
 function debounceDecorator2(func,ms) {
 	let isSleeping;
 	let timer;
-	let count = 0;
-  	return function (...args) {
+
+	 function shell (...args) {
 		clearTimeout(timer);
 		timer = setTimeout(()=>{
 			func(...args);
-			count++;
-			console.log(count);
+			shell.count++;
+			console.log(shell.count);
 		},ms)
 		if (!isSleeping) {
 			func(...args);
 			isSleeping = true;
-			count++
-			console.log(count);
+			shell.count++
+			console.log(shell.count);
 		}
 		
   	} 
+	  shell.count = 0;
+	  return shell;
 }
